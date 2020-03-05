@@ -1,0 +1,46 @@
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pg: <http://www.gutenberg.org/2009/pgterms/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix uwa: <http://www.w3.org/2007/uwa/context/common.owl#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+### http://www.w3.org/2004/02/skos/core#Concept
+skos:Concept a owl:Class
+.
+
+###  http://www.w3.org/2007/uwa/context/common.owl#CharacterSet
+uwa:CharacterSet a owl:Class
+.
+
+
+###  http://www.w3.org/2007/uwa/context/common.owl#ContentType
+uwa:ContentType a owl:Class
+	; rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                 owl:onProperty nie:characterSet ;
+                                 owl:allValuesFrom uwa:CharacterSet
+                               ] ,
+	                  [ rdf:type owl:Restriction ;
+                                 owl:onProperty nie:mimeType ;
+                                 owl:allValuesFrom uwa:ContentType
+                               ]
+.
+
+
+### http://www.semanticdesktop.org/ontologies/2007/01/19/nie#characterSet
+nie:characterSet a owl:ObjectProperty
+	; rdfs:range uwa:CharacterSet
+. 
+
+
+### http://www.semanticdesktop.org/ontologies/2007/01/19/nie#mimeType
+nie:mimeType a owl:ObjectProperty
+	; rdfs:range uwa:ContentType
+. 
+

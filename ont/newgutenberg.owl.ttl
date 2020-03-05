@@ -1,0 +1,271 @@
+@prefix : <http://www.gutenberg.org/> .
+@prefix pg: <http://www.gutenberg.org/2009/pgterms/> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix uwa: <http://www.w3.org/2007/uwa/context/common.owl#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.gutenberg.org/> .
+
+<http://www.gutenberg.org/> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://purl.org/dc/dcam/memberOf
+<http://purl.org/dc/dcam/memberOf> rdf:type owl:ObjectProperty .
+
+
+###  http://purl.org/dc/terms/hasFormat
+dct:hasFormat rdf:type owl:ObjectProperty .
+
+
+###  http://purl.org/dc/terms/isFormatOf
+dct:isFormatOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.gutenberg.org/2009/pgterms/bookshelf
+pg:bookshelf rdf:type owl:ObjectProperty ;
+             rdfs:domain pg:ebook ;
+             rdfs:range pg:Bookshelf ;
+             rdfs:comment "Denotes that an eBook belongs in some bookshelf"@en .
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#characterSet
+nie:characterSet rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#mimeType
+nie:mimeType rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://dbpedia.org/ontology/birthDate
+dbo:birthDate rdf:type owl:DatatypeProperty ;
+              owl:equivalentProperty pg:birthdate .
+
+
+###  http://dbpedia.org/ontology/deathDate
+dbo:deathDate rdf:type owl:DatatypeProperty ;
+              owl:equivalentProperty pg:deathdate .
+
+
+###  http://purl.org/dc/terms/extent
+dct:extent rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/terms/modified
+dct:modified rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/terms/title
+dct:title rdf:type owl:DatatypeProperty .
+
+
+###  http://www.gutenberg.org/2009/pgterms/alias
+pg:alias rdf:type owl:DatatypeProperty ;
+         rdfs:domain pg:agent .
+
+
+###  http://www.gutenberg.org/2009/pgterms/birthdate
+pg:birthdate rdf:type owl:DatatypeProperty ;
+             rdfs:domain pg:agent .
+
+
+###  http://www.gutenberg.org/2009/pgterms/deathdate
+pg:deathdate rdf:type owl:DatatypeProperty ;
+             rdfs:domain pg:agent .
+
+
+###  http://www.gutenberg.org/2009/pgterms/downloads
+pg:downloads rdf:type owl:DatatypeProperty ,
+                      owl:FunctionalProperty ;
+             rdfs:domain pg:ebook ;
+             rdfs:range xsd:integer ;
+             rdfs:comment "Download count"@en .
+
+
+###  http://www.gutenberg.org/2009/pgterms/marc010
+pg:marc010 rdf:type owl:DatatypeProperty ;
+           rdfs:domain pg:ebook .
+
+
+###  http://www.gutenberg.org/2009/pgterms/marc020
+pg:marc020 rdf:type owl:DatatypeProperty ;
+           rdfs:domain pg:ebook .
+
+
+###  http://www.gutenberg.org/2009/pgterms/marc250
+pg:marc250 rdf:type owl:DatatypeProperty ;
+           rdfs:domain pg:ebook .
+
+
+###  http://www.gutenberg.org/2009/pgterms/marc260
+pg:marc260 rdf:type owl:DatatypeProperty ;
+           rdfs:domain pg:ebook .
+
+
+###  http://www.gutenberg.org/2009/pgterms/marc300
+pg:marc300 rdf:type owl:DatatypeProperty ;
+           rdfs:domain pg:ebook .
+
+
+###  http://www.gutenberg.org/2009/pgterms/marc440
+pg:marc440 rdf:type owl:DatatypeProperty ;
+           rdfs:domain pg:ebook .
+
+
+###  http://www.gutenberg.org/2009/pgterms/marc508
+pg:marc508 rdf:type owl:DatatypeProperty ;
+           rdfs:domain pg:ebook .
+
+
+###  http://www.gutenberg.org/2009/pgterms/marc520
+pg:marc520 rdf:type owl:DatatypeProperty ;
+           rdfs:domain pg:ebook .
+
+
+###  http://www.gutenberg.org/2009/pgterms/marc546
+pg:marc546 rdf:type owl:DatatypeProperty ;
+           rdfs:domain pg:ebook .
+
+
+###  http://www.gutenberg.org/2009/pgterms/marc901
+pg:marc901 rdf:type owl:DatatypeProperty ;
+           rdfs:domain pg:ebook .
+
+
+###  http://www.gutenberg.org/2009/pgterms/marc902
+pg:marc902 rdf:type owl:DatatypeProperty ;
+           rdfs:domain pg:ebook .
+
+
+###  http://www.gutenberg.org/2009/pgterms/marc903
+pg:marc903 rdf:type owl:DatatypeProperty ;
+           rdfs:domain pg:ebook .
+
+
+###  http://www.gutenberg.org/2009/pgterms/name
+pg:name rdf:type owl:DatatypeProperty ;
+        rdfs:domain pg:agent .
+
+
+###  http://www.gutenberg.org/2009/pgterms/webpage
+pg:webpage rdf:type owl:DatatypeProperty ;
+           rdfs:domain pg:agent .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://dbpedia.org/ontology/File
+dbo:File rdf:type owl:Class .
+
+
+###  http://dbpedia.org/ontology/Person
+dbo:Person rdf:type owl:Class ;
+           owl:equivalentClass pg:agent .
+
+
+###  http://dbpedia.org/ontology/WrittenWork
+dbo:WrittenWork rdf:type owl:Class .
+
+
+###  http://purl.org/dc/dcmitype/Collection
+<http://purl.org/dc/dcmitype/Collection> rdf:type owl:Class .
+
+
+###  http://www.gutenberg.org/2009/pgterms/Bookshelf
+pg:Bookshelf rdf:type owl:Class ;
+             rdfs:subClassOf <http://purl.org/dc/dcmitype/Collection> ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty dct:title ;
+                               owl:someValuesFrom xsd:string
+                             ] ;
+             rdfs:comment "pgterms : classe qui se réfère à une collection de livres"@fr .
+
+
+###  http://www.gutenberg.org/2009/pgterms/agent
+pg:agent rdf:type owl:Class ;
+         rdfs:comment """pgterms : classe
+un agent est soit un creator ou un marcrel"""@fr .
+
+
+###  http://www.gutenberg.org/2009/pgterms/ebook
+pg:ebook rdf:type owl:Class ;
+         rdfs:subClassOf dbo:WrittenWork ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty dct:hasFormat ;
+                           owl:allValuesFrom dbo:File
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty pg:downloads ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onDataRange xsd:integer
+                         ] ;
+         rdfs:comment "Ebook est un objet (classe) pgterms"@fr .
+
+
+###  http://www.gutenberg.org/2009/pgterms/file
+pg:file rdf:type owl:Class ;
+        rdfs:subClassOf dbo:File ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty dct:isFormatOf ;
+                          owl:allValuesFrom pg:ebook
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty dct:modified ;
+                          owl:allValuesFrom xsd:string
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty dct:extent ;
+                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onDataRange xsd:integer
+                        ] ;
+        rdfs:comment """A format of an ebook.
+
+The dc:extent of a file is its size in bytes"""@en ,
+                     """pgterms : classe qui isFormatOf Ebook
+tous les types de fichiers électroniques proposés par gutenberg"""@fr .
+
+
+###  http://www.w3.org/2004/02/skos/core#Concept
+<http://www.w3.org/2004/02/skos/core#Concept> rdf:type owl:Class .
+
+
+###  http://www.w3.org/2007/uwa/context/common.owl#CharacterSet
+uwa:CharacterSet rdf:type owl:Class .
+
+
+###  http://www.w3.org/2007/uwa/context/common.owl#ContentType
+uwa:ContentType rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( pg:agent
+                pg:ebook
+                pg:file
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

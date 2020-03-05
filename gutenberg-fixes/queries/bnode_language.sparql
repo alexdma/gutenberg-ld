@@ -1,0 +1,19 @@
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+## Creates one URI per ISO-639 (1 or 2) entry of each language
+## using Library of Congress URIs, which align 639-1 and 639-2
+## through skos:exactMatch
+
+DELETE { GRAPH ?g {
+   ?x dct:language ?l . ?l rdf:value ?lv
+}}
+INSERT { GRAPH ?g {
+	?x dct:language ?lnu . ?lnu rdf:value ?lvnu 
+}}
+WHERE { GRAPH ?g {
+   ?x dct:language ?l . ?l rdf:value ?lv
+   BIND( IRI(CONCAT("http://id.loc.gov/vocabulary/iso639-", IF(STRLEN(STR(?lv))=2, "1", "2"), "/", STR(?lv))) as ?lnu )
+   BIND( STRDT(STR(?lv), <http://purl.org/dc/terms/RFC4646>) as ?lvnu )
+}}
