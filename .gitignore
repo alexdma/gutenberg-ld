@@ -1,0 +1,6 @@
+.DS_Store
+
+.project
+.pydevproject
+.python-version
+__pycache__/
