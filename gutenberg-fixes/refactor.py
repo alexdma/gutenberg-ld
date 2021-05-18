@@ -19,12 +19,15 @@ PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX fabio: <http://purl.org/spar/fabio/>
 PREFIX nie: <{NIE}>
 PREFIX pgterms: <{PG}>
-PREFIX rdf: <RDF>
+PREFIX rdf: <{RDF}>
 PREFIX rdfs: <{RDFS}>
 PREFIX uwa: <{UWA}>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 """
 
+if DATASET.endswith("/"):
+	DATASET = DATASET[:-1]
+	
 sparql = SPARQLWrapper('/'.join([DATASET, 'query']), updateEndpoint='/'.join([DATASET, 'update']))
 
 
@@ -106,10 +109,10 @@ WHERE {{
 			if 'charset' in options and options['charset']:
 				chst = options['charset']
 				charset = UWA['CharacterSet_' + chst.upper()]
-				format = DHTK['/'.join(['format', urllib.parse.quote(mimetype, safe=''), 'charset', chst])]
+				fmt = DHTK['/'.join(['format', urllib.parse.quote(mimetype, safe=''), 'charset', chst])]
 				insert = f"""
-	?x dct:format <{format}> .
-	<{format}> a uwa:ContentType
+	?x dct:format <{fmt}> .
+	<{fmt}> a uwa:ContentType
 	   ; uwa:contentTypeName "{content_type}"^^xsd:string
 	   ; nie:mimeType <{mime}>
 	   ; nie:characterSet <{charset}> .
@@ -121,10 +124,10 @@ WHERE {{
 	.
 """
 			else: 
-				format = mime
+				fmt = mime
 				insert = f"""
-	?x dct:format <{format}> .
-	<{format}> a uwa:ContentType
+	?x dct:format <{fmt}> .
+	<{fmt}> a uwa:ContentType
 	   ; uwa:contentTypeName "{mimetype}"^^xsd:string
 	   ; ?p1 ?y1
 	.
